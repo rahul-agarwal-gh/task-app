@@ -34,11 +34,12 @@ router.post("/users", async function(req, res){
 
     const user = new User( req.body )
 
+    console.log(user)
     try {
         await user.save() //await for user to be saved and when it comes, just send it
         res.send(user)
     } catch (error) { //if above code threw any error(if user.save() called a reject)
-        res.send("Some Error Occurred")
+        res.status(400).send("Some Error Occurred")
     }
    
 })

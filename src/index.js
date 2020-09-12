@@ -1,7 +1,6 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 
-require('./db/mongoose') /*require without storing in a const just makes sure taht the specified path gets run.Here the code inside 
+require('./db/mongoose') /*require without storing in a const just makes sure that the specified path gets run. Here the code inside 
 the mongoose.js file will run that will make a connection to the DB*/
 
 const UserRoute = require('./routes/user')

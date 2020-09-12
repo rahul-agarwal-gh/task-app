@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator') //using validator npm packages to hanndle validations
 
+
+//specifying the collection name(here User(it will be converted to users in db)) and the schema the collection will follow
 const User = mongoose.model('User', {
     name : {
         type : String, //validation using mongoose.model 
@@ -23,19 +25,19 @@ const User = mongoose.model('User', {
         validate(value){
             if(!validator.isEmail(value))
                 throw new Error("Email is invalid")
-        },
+        }
+    },
      password : {
          type : String,
          required : true,
          trim : true,
          minlength : 7,
          validate(value){
-            if(value.toLoweCase().includes('password'))
+            if(value.toLowerCase().includes('password'))
                 throw new Error("Password cannot contain 'password' ");
          }
      }   
 
-    }
 })
 
 module.exports = User
